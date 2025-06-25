@@ -5,14 +5,6 @@ export class Snake {
     this.grid = grid;
     this.reset();
     this.alive = true;
-    this.currentPosition = {
-      x: Math.floor(Math.random() * this.grid.cols),
-      y: Math.floor(Math.random() * this.grid.rows)
-    };
-    this.movementDirection = 'down'; // Default direction
-    this.updateHeadPosition();
-    this.bodyLength = 3;
-    this.bodyCoordinates = [{...this.currentPosition}]; // Store body segments
   }
 
   reset() {
@@ -32,7 +24,7 @@ export class Snake {
       this.movementDirection = 'down';
     }
 
-    this.bodyLength = 3;
+    this.bodyLength = 8;
     this.bodyCoordinates = [ { ...this.currentPosition } ];
     this.alive = true;
     this.updateHeadPosition();
@@ -80,7 +72,7 @@ export class Snake {
     newPosition.y >= this.grid.rows
   ) {
     this.alive = false;
-    console.warn("Snake hit the wall. Game over.");
+    this.gameOver();
     this.grid.resetCell(this.currentPosition.x, this.currentPosition.y);
     this.reset();
     return;
@@ -140,5 +132,16 @@ export class Snake {
     this.bodyCoordinates.push(newSegment);
   }
 
+  gameOver() {
+    // Clear all snake segments from the grid
+    for (const seg of this.bodyCoordinates) {
+      this.grid.resetCell(seg.x, seg.y);
+    }
+    this.alive = false;
+    // Optionally: clear bodyCoordinates and reset bodyLength
+    this.bodyCoordinates = [];
+    this.bodyLength = 1;
+    // You can add more end-of-game logic here (e.g., show a message)
+  }
 
 }

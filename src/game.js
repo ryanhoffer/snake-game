@@ -13,7 +13,6 @@ export class Game {
   setup() {
     createCanvas(CANVAS_SIZE, CANVAS_SIZE);
     colorMode(RGB, 255, 255, 255);
-    this.grid.setCell(0, 0, 'body');
     this.grid.setCell(1, 0, 'food');
   }
 
