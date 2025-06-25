@@ -1,12 +1,15 @@
 // Game configuration constants
 export const CELL_SIZE = 16;
-export const CANVAS_SIZE = 960;
+export const GRID_SIZE = 20
+export const CANVAS_SIZE = CELL_SIZE * GRID_SIZE;
 export const TICK_RATE = 10;
-export let LEVEL = 7;
+export let LEVEL = 1;
 
 export const STATE_COLORS = {
-  'empty': [255, 255, 255],
-  'head': [255, 0, 0]
+  'empty': [70, 60, 70],
+  'head': [34, 139, 34],
+  'body': [0, 128, 150],
+  'food': [255, 215, 0],
 };
 
 export const KEY_BINDINGS = {

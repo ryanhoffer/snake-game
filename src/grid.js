@@ -23,6 +23,13 @@ export class Grid {
         return arr;
     }
 
+    setCell(x, y, state) {
+        if (x >= 0 && x < this.cols && y >= 0 && y < this.rows) {
+        this.cells[x][y].state = state;
+        this.cells[x][y].color = STATE_COLORS[state] || STATE_COLORS['empty'];
+        }
+    }
+
     resetCell(x, y) {
         this.cells[x][y] = {
         state: 'empty',

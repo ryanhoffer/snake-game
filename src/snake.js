@@ -1,4 +1,4 @@
-import { CELL_SIZE, CANVAS_SIZE } from './config.js';
+import { CELL_SIZE, CANVAS_SIZE, STATE_COLORS } from './config.js';
 
 export class Snake {
   constructor(grid) {
@@ -31,7 +31,7 @@ export class Snake {
     const cell = this.grid.getCell(this.currentPosition.x, this.currentPosition.y);
     if (cell) {
       cell.state = 'head';
-      cell.color = [255, 0, 0]; // Red color for the snake head
+      cell.color = STATE_COLORS[cell.state];
     }
   }
 
