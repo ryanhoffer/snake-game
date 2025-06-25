@@ -24,7 +24,7 @@ export class Snake {
       this.movementDirection = 'down';
     }
 
-    this.bodyLength = 8;
+    this.bodyLength = 1;
     this.bodyCoordinates = [ { ...this.currentPosition } ];
     this.alive = true;
     this.updateHeadPosition();
