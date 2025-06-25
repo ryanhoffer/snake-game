@@ -1,12 +1,12 @@
 import { Grid } from './grid.js';
 import { Snake } from './snake.js';
-import { CANVAS_SIZE,KEY_BINDINGS, TICK_RATE } from './config.js';
+import { CANVAS_SIZE,KEY_BINDINGS, TICK_RATE, LEVEL } from './config.js';
 
 export class Game {
   constructor() {
     this.grid = new Grid();
     this.snake = new Snake(this.grid);
-    this.level = 50;
+    this.level = LEVEL;
     this.speedTimer = TICK_RATE / this.level;
   }
 

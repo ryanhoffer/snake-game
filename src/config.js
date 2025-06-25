@@ -1,7 +1,8 @@
 // Game configuration constants
 export const CELL_SIZE = 16;
 export const CANVAS_SIZE = 960;
-export const TICK_RATE = 40;
+export const TICK_RATE = 10;
+export let LEVEL = 7;
 
 export const STATE_COLORS = {
   'empty': [255, 255, 255],
