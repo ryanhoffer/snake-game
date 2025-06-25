@@ -1,0 +1,38 @@
+import { Grid } from './grid.js';
+import { Snake } from './snake.js';
+import { CANVAS_SIZE,KEY_BINDINGS, TICK_RATE } from './config.js';
+
+export class Game {
+  constructor() {
+    this.grid = new Grid();
+    this.snake = new Snake(this.grid);
+    this.level = 50;
+    this.speedTimer = TICK_RATE / this.level;
+  }
+
+  setup() {
+    createCanvas(CANVAS_SIZE, CANVAS_SIZE);
+    colorMode(RGB, 255, 255, 255);
+  }
+
+  draw() {
+    this.speedTimer -= 1;
+    background(0);
+    
+    this.grid.draw();
+    
+    if (this.speedTimer <= 0 && this.snake.alive) {
+      this.speedTimer = TICK_RATE / Math.max(this.level, 1);
+      this.snake.move();
+    }
+  }
+
+  handleKeyPress(key) {
+    for (let dir in KEY_BINDINGS) {
+      if (KEY_BINDINGS[dir].includes(key)) {
+        this.snake.changeDirection(dir);
+        break;
+      }
+    }
+  }
+}
